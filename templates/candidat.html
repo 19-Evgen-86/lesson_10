@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %} Все кандидаты {% endblock %}
+
+{% block body %}
+
+        <pre>
+        <img src="{{data["picture"]}}">
+
+        Имя кандидата - {{ data["name"] }}<br>
+        Позиция кандидата: {{ data["position"] }}<br>
+        Навыки через запятую: {{ data["skills"] }}<br>
+        </pre>
+
+
+
+
+
+{% endblock %}

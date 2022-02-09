@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %} Все кандидаты {% endblock %}
+
+{% block body %}
+
+    {% for el in data %}
+
+        <pre>
+        Имя кандидата - {{ el["name"] }}<br>
+        Позиция кандидата: {{ el["position"] }}<br>
+        Навыки через запятую: {{ el["skills"] }}<br>
+        </pre>
+
+    {% endfor %}
+
+
+
+{% endblock %}

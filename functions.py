@@ -1,4 +1,5 @@
 import json
+from re import split
 
 JSON_FILE = 'conditates.json'
 
@@ -23,8 +24,10 @@ def data_request(*args):
             if el['id'] == args[0]:
                 return el
     elif isinstance(args[0], str):
+        skills = split(',| ', args[0])
         res = []
         for el in data:
-            if args[0] in el["skills"]:
-                res.append(el)
+            for i in range(len(skills)):
+                if skills[i] in el["skills"]:
+                    res.append(el)
         return res

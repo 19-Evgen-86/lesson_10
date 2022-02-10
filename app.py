@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+
 import functions
 
 app = Flask(__name__)
@@ -14,19 +15,19 @@ def candidate():
     # Проверяем метод запроса
     # если данные из формы не переданы выводим всех кандитатов
     if request.method == "GET":
-        data = functions.data_request()
+        data: list = functions.data_request()
         # передаем в шаблон данные из json
         return render_template("candidates.html", data=data)
     else:
         # если данные из формы переданны, то проверяем ID(число) это или Навыки(строка)
-        search_data = request.form.get("Search")
+        search_data: str = request.form.get("Search")
         # если в форме число, то вызываем функцию data_request с параметром int
         if search_data.isdigit():
-            data = functions.data_request(int(search_data))
+            data: dict = functions.data_request(int(search_data))
             return render_template("candidat.html", data=data)
         else:
-        # если переданна строка
-            data = functions.data_request(search_data)
+            # если переданна строка
+            data: list = functions.data_request(search_data)
             return render_template("candidates.html", data=data)
 
 

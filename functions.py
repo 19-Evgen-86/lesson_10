@@ -1,7 +1,7 @@
 import json
 from re import split
 
-JSON_FILE = 'conditates.json'
+JSON_FILE: str = 'conditates.json'
 
 
 def get_data_json():
@@ -18,21 +18,22 @@ def data_request(*args):
     :return:
     """
     # получем все данные из json
-    data = get_data_json()
+    data: list = get_data_json()
     # если аргументы в функцию не переданны
     if not args:
         return data
     # если переданный агрумент типа int(т.е id кандитата)
     elif isinstance(args[0], int):
+
         for elem in data:
             if elem['id'] == args[0]:
                 return elem
     # если переданный агрумент типа string (т.е навык(и) кандитата)
     elif isinstance(args[0], str):
-        skills = split(',| ', args[0])
-        res = []
+        skills: list = split(',| ', args[0])
+        res: list = []
         for elem in data:
             for i in range(len(skills)):
-                if skills[i].lower() in elem["skills"].lowe():
+                if skills[i].lower() in elem["skills"].lower():
                     res.append(elem)
         return res

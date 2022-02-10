@@ -7,15 +7,34 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-
 <div class="container">
-
-    {% block body %}
-
-
-
-    {% endblock %}
+    <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/candidates/">Кандидаты</a>
+                    </li>
+                </ul>
+                <form action="/candidates/" method="post">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
 </div>
 
+<div class="container">
+    <div style="margin-top: 10px">
+        {% block body %}
+
+            <h2> Урок 10. Домашнее задание </h2>
+
+        {% endblock %}
+    </div>
+</div>
 </body>
 </html>

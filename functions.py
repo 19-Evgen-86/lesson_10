@@ -1,6 +1,8 @@
 import json
 from re import split
 
+from classes import MyErrors
+
 JSON_FILE: str = 'conditates.json'
 
 
@@ -24,16 +26,21 @@ def data_request(*args):
         return data
     # если переданный агрумент типа int(т.е id кандитата)
     elif isinstance(args[0], int):
-
         for elem in data:
             if elem['id'] == args[0]:
                 return elem
+        else:
+            raise MyErrors("ID NOT FIND")
     # если переданный агрумент типа string (т.е навык(и) кандитата)
     elif isinstance(args[0], str):
-        skills: list = split(',| ', args[0])
+        skills: list = split(',| +', args[0])
         res: list = []
         for elem in data:
             for i in range(len(skills)):
                 if skills[i].lower() in elem["skills"].lower():
                     res.append(elem)
-        return res
+
+        if res:
+            return res
+        else:
+            raise MyErrors("SKILLS NOT FIND")

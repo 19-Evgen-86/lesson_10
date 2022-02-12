@@ -12,7 +12,7 @@ def page_home():
 
 
 @app.route("/candidates/")
-def candidate():
+def page_candidate():
     # выводим всех кандидатов
     data: list = functions.data_request()
     # передаем в шаблон данные из json
@@ -44,3 +44,4 @@ def candidate_search():
 
 if __name__ == '__main__':
     app.run()
+

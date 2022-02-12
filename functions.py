@@ -1,9 +1,11 @@
 import json
+import os
 from re import split
 
 from classes import MyErrors
 
-JSON_FILE: str = 'conditates.json'
+parent_dir = os.path.pardir
+JSON_FILE: str = os.path.join(parent_dir, 'conditates.json')
 
 
 def get_data_json():

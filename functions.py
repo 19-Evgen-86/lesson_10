@@ -14,7 +14,6 @@ def get_data_json():
 
     return data
 
-
 def data_request(*args):
     """
     на основе входных данных делает выборку из json

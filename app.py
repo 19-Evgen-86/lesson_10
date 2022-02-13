@@ -4,7 +4,8 @@ import functions
 from classes import MyErrors
 
 app = Flask(__name__)
-
+app.config['DEBUG'] = True
+app.config['port'] = 80
 
 @app.route("/")
 def page_home():
